@@ -13,6 +13,25 @@
                     
                 }
 
+                function playRound(playerSelection, computerSelection) {
+
+                    let loseMessage = `You Lose! ${computerSelection} beats ${playerSelection}.`;
+                    let drawMessage = `Tie Round! ${computerSelection} draws ${playerSelection}.`;
+                    let winMessage = `You Win! ${computerSelection} loses to ${playerSelection}.`;
+
+                    if(playerSelection === "rock"){
+                        return ((computerSelection === "rock") ? drawMessage : (computerSelection === "scissors") ? winMessage : loseMessage);
+                    }
+                    else if(playerSelection ==="paper"){
+                        return ((computerSelection === "paper") ? drawMessage : (computerSelection === "rock") ? winMessage : loseMessage);
+                    }
+                    else{
+                        return ((computerSelection === "scissors") ? drawMessage : (computerSelection === "paper") ? winMessage : loseMessage);
+                    }
+                }
+
+                let playerSelection = "rock";
+
                 console.log(getComputerChoice());
 
                // console.log("Hello World!");
