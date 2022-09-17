@@ -20,17 +20,49 @@
                     let winMessage = `You Win! ${computerSelection} loses to ${playerSelection.toLowerCase()}.`;
 
                     if(playerSelection.toLowerCase() === "rock"){
-                        return ((computerSelection === "rock") ? drawMessage : (computerSelection === "scissors") ? winMessage : loseMessage);
+                        (   
+                            (computerSelection === "rock") ? console.log(drawMessage) :
+                            (computerSelection === "scissors") ? console.log(winMessage) : 
+                            console.log(loseMessage)   
+                        );
+                        return (   
+                            (computerSelection === "rock") ? 0 :
+                            (computerSelection === "scissors") ? 1 : 
+                            -1  );
+
                     }
                     else if(playerSelection.toLowerCase() ==="paper"){
-                        return ((computerSelection === "paper") ? drawMessage : (computerSelection === "rock") ? winMessage : loseMessage);
+                        (   
+                            (computerSelection === "paper") ? console.log(drawMessage) : 
+                            (computerSelection === "rock") ? console.log(winMessage) : 
+                            console.log(loseMessage)   
+                        );
+                        return (   
+                            (computerSelection === "paper") ? 0 : 
+                            (computerSelection === "rock") ? 1 : 
+                            -1   );
                     }
                     else{
-                        return ((computerSelection.toLowerCase() === "scissors") ? drawMessage : (computerSelection === "paper") ? winMessage : loseMessage);
+                        (   
+                            (computerSelection.toLowerCase() === "scissors") ? console.log(drawMessage) : 
+                            (computerSelection === "paper") ? console.log(winMessage): 
+                            console.log(loseMessage)    
+                        );
+                        return (   
+                            (computerSelection.toLowerCase() === "scissors") ? 0 : 
+                            (computerSelection === "paper") ? 1 : 
+                            -1    );
                     }
                 }
 
-                let playerSelection = "SCissors";
+                function game(){
+                    console.log("Let's play a game of RPS.");
+                    
+                    for(let i = 0;  i < 5; i++)
+                    {
+                        prompt("Enter a choice: ");
+                    }
+                }
                
 
                 console.log(playRound(playerSelection,getComputerChoice()));
