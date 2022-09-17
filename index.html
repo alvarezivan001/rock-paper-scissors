@@ -9,30 +9,31 @@
                 
                 function getComputerChoice() {
                     let ranNum = Math.floor(Math.random()*3);
-                    return ((ranNum === 1) ? "rock" : (ranNum === 2) ? "paper" : "scissor");
+                    return ((ranNum === 1) ? "rock" : (ranNum === 2) ? "paper" : "scissors");
                     
                 }
 
                 function playRound(playerSelection, computerSelection) {
 
-                    let loseMessage = `You Lose! ${computerSelection} beats ${playerSelection}.`;
-                    let drawMessage = `Tie Round! ${computerSelection} draws ${playerSelection}.`;
-                    let winMessage = `You Win! ${computerSelection} loses to ${playerSelection}.`;
+                    let loseMessage = `You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}.`;
+                    let drawMessage = `Tie Round! ${computerSelection} draws ${playerSelection.toLowerCase()}.`;
+                    let winMessage = `You Win! ${computerSelection} loses to ${playerSelection.toLowerCase()}.`;
 
-                    if(playerSelection === "rock"){
+                    if(playerSelection.toLowerCase() === "rock"){
                         return ((computerSelection === "rock") ? drawMessage : (computerSelection === "scissors") ? winMessage : loseMessage);
                     }
-                    else if(playerSelection ==="paper"){
+                    else if(playerSelection.toLowerCase() ==="paper"){
                         return ((computerSelection === "paper") ? drawMessage : (computerSelection === "rock") ? winMessage : loseMessage);
                     }
                     else{
-                        return ((computerSelection === "scissors") ? drawMessage : (computerSelection === "paper") ? winMessage : loseMessage);
+                        return ((computerSelection.toLowerCase() === "scissors") ? drawMessage : (computerSelection === "paper") ? winMessage : loseMessage);
                     }
                 }
 
-                let playerSelection = "rock";
+                let playerSelection = "SCissors";
+               
 
-                console.log(getComputerChoice());
+                console.log(playRound(playerSelection,getComputerChoice()));
 
                // console.log("Hello World!");
             </script>
