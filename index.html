@@ -7,12 +7,14 @@
         <body>
             <script>
                 
+                // gives a computer choice of r, p, or s
                 function getComputerChoice() {
                     let ranNum = Math.floor(Math.random()*3);
                     return ((ranNum === 1) ? "rock" : (ranNum === 2) ? "paper" : "scissors");
                     
                 }
 
+                // logic that determines if the player and computer lost, won, or tied the round
                 function playRound(playerSelection, computerSelection) {
 
                     let loseMessage = `You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}.`;
@@ -55,6 +57,7 @@
                     }
                 }
 
+                // plays a game of five rounds between the user and computer
                 function game(){
                     console.log("Let's play a game of RPS!");
                     
@@ -89,7 +92,7 @@
 
                 game();
 
-               // console.log("Hello World!");
+               
             </script>
         </body>
     </html>
