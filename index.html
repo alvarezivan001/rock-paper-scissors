@@ -7,10 +7,12 @@
 
         </head>
         <body>
-
+            <h3>Lets play a game of RPS! Make a choice:</h3>
             <button class="rock">rock</button>
             <button class="paper">paper</button>
             <button class="scissors">scissors</button>
+            <div class="scores">Current Score is:</div>
+            <div class="result"></div>
 
 
             <script>
@@ -23,7 +25,10 @@
                 }
 
                 // logic that determines if the player and computer lost, won, or tied the round
-                function playRound(playerSelection, computerSelection) {
+                function playRound(playerSelection) {
+                    
+                    let computerSelection = getComputerChoice();
+                    let div = document.querySelector('result');
 
                     let loseMessage = `You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}.`;
                     let drawMessage = `Tie Round! ${computerSelection} draws ${playerSelection.toLowerCase()}.`;
@@ -31,9 +36,9 @@
 
                     if(playerSelection.toLowerCase() === "rock"){
                         (   
-                            (computerSelection === "rock") ? console.log(drawMessage) :
-                            (computerSelection === "scissors") ? console.log(winMessage) : 
-                            console.log(loseMessage)   
+                            (computerSelection === "rock") ? div.textContent = drawMessage :
+                            (computerSelection === "scissors") ? div.textContent = winMessage : 
+                            div.textContent = loseMessage
                         );
                         return (   
                             (computerSelection === "rock") ? 0 :
@@ -43,9 +48,9 @@
                     }
                     else if(playerSelection.toLowerCase() ==="paper"){
                         (   
-                            (computerSelection === "paper") ? console.log(drawMessage) : 
-                            (computerSelection === "rock") ? console.log(winMessage) : 
-                            console.log(loseMessage)   
+                            (computerSelection === "paper") ? div.textContent = drawMessage : 
+                            (computerSelection === "rock") ? div.textContent = winMessage : 
+                            div.textContent = loseMessage 
                         );
                         return (   
                             (computerSelection === "paper") ? 0 : 
@@ -54,9 +59,9 @@
                     }
                     else{
                         (   
-                            (computerSelection.toLowerCase() === "scissors") ? console.log(drawMessage) : 
-                            (computerSelection === "paper") ? console.log(winMessage): 
-                            console.log(loseMessage)    
+                            (computerSelection.toLowerCase() === "scissors") ? div.textContent = drawMessage : 
+                            (computerSelection === "paper") ? div.textContent = winMessage : 
+                            div.textContent = loseMessage    
                         );
                         return (   
                             (computerSelection.toLowerCase() === "scissors") ? 0 : 
@@ -69,8 +74,8 @@
                 const buttonsList = document.querySelectorAll('button');
                 
                 buttonsList.foreach((button) => {
-
-                    button.addEventListener('click',playRound)
+                    
+                    button.addEventListener('click',playRound(button.className));
 
                 });
 
