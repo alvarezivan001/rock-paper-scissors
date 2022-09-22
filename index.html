@@ -23,7 +23,7 @@
                     return ((ranNum === 1) ? "rock" : (ranNum === 2) ? "paper" : "scissors");
                     
                 }
-
+                
                 // logic that determines if the player and computer lost, won, or tied the round
                 function playRound(playerSelection) {
                     
@@ -34,16 +34,17 @@
                     let drawMessage = `Tie Round! ${computerSelection} draws ${playerSelection.toLowerCase()}.`;
                     let winMessage = `You Win! ${computerSelection} loses to ${playerSelection.toLowerCase()}.`;
 
-                    if(playerSelection.toLowerCase() === "rock"){
+                    if(playerSelwinTrackerection.toLowerCase() === "rock"){
                         (   
                             (computerSelection === "rock") ? div.textContent = drawMessage :
                             (computerSelection === "scissors") ? div.textContent = winMessage : 
                             div.textContent = loseMessage
                         );
-                        return (   
-                            (computerSelection === "rock") ? 0 :
-                            (computerSelection === "scissors") ? 1 : 
-                            -1  );
+                        (   
+                            (computerSelection === "rock") ? userScore = userScore :
+                            (computerSelection === "scissors") ? userScore += 1 : 
+                            compScore += 1
+                        );
 
                     }
                     else if(playerSelection.toLowerCase() ==="paper"){
@@ -52,10 +53,11 @@
                             (computerSelection === "rock") ? div.textContent = winMessage : 
                             div.textContent = loseMessage 
                         );
-                        return (   
-                            (computerSelection === "paper") ? 0 : 
-                            (computerSelection === "rock") ? 1 : 
-                            -1   );
+                        (   
+                            (computerSelection === "paper") ? userScore = userScore : 
+                            (computerSelection === "rock") ? userScore += 1 : 
+                            compScore += 1
+                        );
                     }
                     else{
                         (   
@@ -63,21 +65,36 @@
                             (computerSelection === "paper") ? div.textContent = winMessage : 
                             div.textContent = loseMessage    
                         );
-                        return (   
-                            (computerSelection.toLowerCase() === "scissors") ? 0 : 
-                            (computerSelection === "paper") ? 1 : 
-                            -1    );
+                        (   
+                            (computerSelection.toLowerCase() === "scissors") ? userScore = userScore : 
+                            (computerSelection === "paper") ? userScore += 1 : 
+                            compScore += 1  
+                        );
                     }
+                    
+                    divScores.textContent = `Current score is: p - ${userScore}  c - ${compScore}`
+
                 }
 
-                //add an event listener for the buttons, nodelist for buttons
+                //add an event listener for the buttons, nodelist for buttons               
                 const buttonsList = document.querySelectorAll('button');
                 
-                buttonsList.foreach((button) => {
-                    
-                    button.addEventListener('click',playRound(button.className));
+                let userScore = 0;
+                let compScore = 0;
+                
+                let divScores = document.querySelector('scores');
+                
 
+                buttonsList.foreach((button) => {
+                    if(userScore < 5 && compScore < 5)
+                    {   button.addEventListener('click',playRound(button.className));   }
                 });
+
+               if(userScore >= 5 || compScore >= 5)
+               {
+                    let div = document.querySelector('result');
+                    
+               }
 
                 // plays a game of five rounds between the user and computer
                 // function game(){
