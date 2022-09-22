@@ -93,7 +93,13 @@
                if(userScore >= 5 || compScore >= 5)
                {
                     let div = document.querySelector('result');
-                    
+                    div.textContent = decideWinner(userScore, compScore);
+               }
+
+               function decideWinner(userScore,compScore)
+               {
+                    if(userScore > compScore) {return "You win";}
+                    else {return "You Lose";}
                }
 
                 // plays a game of five rounds between the user and computer
