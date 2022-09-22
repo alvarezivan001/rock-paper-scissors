@@ -3,8 +3,16 @@
         <head>
             <meta charset="UTF-8">
             <title>rock paper scissors</title>
+
+
         </head>
         <body>
+
+            <button class="rock">rock</button>
+            <button class="paper">paper</button>
+            <button class="scissors">scissors</button>
+
+
             <script>
                 
                 // gives a computer choice of r, p, or s
@@ -57,40 +65,48 @@
                     }
                 }
 
-                // plays a game of five rounds between the user and computer
-                function game(){
-                    console.log("Let's play a game of RPS!");
-                    
-                    let playerScore = 0;
-                    let computerScore = 0;
-                    let winTracker = 0;
-
-                    for(let i = 1;  i < 6; i++)
-                    {
-                        console.log("Round " + i);
-                        let playerSelection = prompt("Enter a choice: ");
-
-                        winTracker = playRound(playerSelection,getComputerChoice());
-
-                        (
-                            (winTracker === 1) ? (playerScore = playerScore + winTracker) :
-                            (winTracker === 0) ? 0 :
-                            (computerScore = computerScore - winTracker)
-                        );
-
-                        console.log("Current score - Player: " + playerScore + "  " + "Computer: " + computerScore);
-
-                    }
-                    console.log("End Game!");
-
-                    if(playerScore === computerScore){console.log("Tie Game!");}
-                    else if(playerScore > computerScore){console.log("You win the Game!");}
-                    else{console.log("You lose the Game!");}
-                }
+                //add an event listener for the buttons, nodelist for buttons
+                const buttonsList = document.querySelectorAll('button');
                 
-        
+                buttonsList.foreach((button) => {
 
-                game();
+                    button.addEventListener('click',playRound)
+
+                });
+
+                // plays a game of five rounds between the user and computer
+                // function game(){
+                //     console.log("Let's play a game of RPS!");
+                    
+                //     let playerScore = 0;
+                //     let computerScore = 0;
+                //     let winTracker = 0;
+
+                //     for(let i = 1;  i < 6; i++)
+                //     {
+                //         console.log("Round " + i);
+                //         let playerSelection = prompt("Enter a choice: ");
+
+                //         winTracker = playRound(playerSelection,getComputerChoice());
+
+                //         (
+                //             (winTracker === 1) ? (playerScore = playerScore + winTracker) :
+                //             (winTracker === 0) ? 0 :
+                //             (computerScore = computerScore - winTracker)
+                //         );
+
+                //         console.log("Current score - Player: " + playerScore + "  " + "Computer: " + computerScore);
+
+                //     }
+                //     console.log("End Game!");
+
+                //     if(playerScore === computerScore){console.log("Tie Game!");}
+                //     else if(playerScore > computerScore){console.log("You win the Game!");}
+                //     else{console.log("You lose the Game!");}
+                // }
+            
+
+                // game();
 
                
             </script>
